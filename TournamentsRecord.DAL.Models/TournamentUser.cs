@@ -13,7 +13,7 @@ namespace TournamentsRecord.DAL.Models
         [Required, ForeignKey("Tournament")]
         public int TournamentId { get; set; }
 
-        [Required, ForeignKey("User")]
+        [Required, ForeignKey("UserId")]
         public int UserId { get; set; }
 
         [Required]
@@ -23,7 +23,7 @@ namespace TournamentsRecord.DAL.Models
         public bool IsActive { get; set; }
         
         public virtual Tournament Tournament { get; set; }
-        
-        public virtual List<User> Users { get; set; }
+        //[ForeignKey("UserId")]
+        //public virtual List<User> Users { get; set; }
     }
 }

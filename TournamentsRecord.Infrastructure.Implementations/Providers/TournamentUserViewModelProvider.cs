@@ -13,18 +13,12 @@ using TournamentsRecord.Infrastructure.ViewModel;
 namespace TournamentsRecord.Infrastructure.Implementations.Providers
 {
     public class TournamentUserViewModelProvider : ITournamentUserViewModelProvider
-    {
-        //private static readonly IInclusionStrategy<TournamentUser> InclusionStrategy =
+    {       
+        //private static readonly IInclusionStrategy<TournamentUser> InclusionStrategyWithUsers =
         //    new InclusionStrategy<TournamentUser>(
-        //        o => o
-        //            .Include(u => u.TournamentUserTournaments)
+        //        o => o                    
+        //            .Include(u => u.)                    
         //    );
-
-        private static readonly IInclusionStrategy<TournamentUser> InclusionStrategyWithUsers =
-            new InclusionStrategy<TournamentUser>(
-                o => o                    
-                    .Include(u => u.Users)                    
-            );
 
         private static readonly IInclusionStrategy<TournamentUser> InclusionStrategyWithTournament =
             new InclusionStrategy<TournamentUser>(
@@ -57,10 +51,10 @@ namespace TournamentsRecord.Infrastructure.Implementations.Providers
                 .FirstOrDefault();
         }
 
-        public async Task<IEnumerable<TournamentUserViewModel>> ByTournamentIdAsync(int TournamentId)
-        {
-            return (await _TournamentUserRepository.QueryAsync<TournamentUserViewModel>(x => x.TournamentId == TournamentId, InclusionStrategyWithUsers));
-        }
+        //public async Task<IEnumerable<TournamentUserViewModel>> ByTournamentIdAsync(int TournamentId)
+        //{
+        //    return (await _TournamentUserRepository.QueryAsync<TournamentUserViewModel>(x => x.TournamentId == TournamentId, InclusionStrategyWithUsers));
+        //}
 
         public async Task<IEnumerable<TournamentUserViewModel>> ByUserIdAsync(int UserId)
         {
