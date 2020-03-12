@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+  <div fxHide.gt-xs>
+      <button mat-icon-button (click)="onToggleSidenav()">
+          <mat-icon>menu</mat-icon>
+      </button>
+  </div>
+  <div>
+      <a routerLink="/home">Owner-Account</a>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+      <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+          <li>
+              <a routerLink="/owner">Owner Actions</a>
+          </li>
+          <li>
+              <a routerLink="/account">Account Actions</a>
+          </li>
+      </ul>
+  </div>
+</mat-toolbar>
+
+
+<!--<mat-toolbar color="primary">
+  <div fxShow="true" fxHide.gt-sm="true">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <a mat-button class="companyName" routerLink="/">
+    <span>Site name</span>
+  </a>
+  <span class="example-spacer"></span>
+  <div fxShow="true" fxHide.lt-md="true">
+    <a mat-button routerLink="/about-us">About us</a>
+    <a mat-button routerLink="/prices">Prices</a>
+    <a mat-button routerLink="/start-page">Start page</a>
+    <a mat-button routerLink="/offer">Offer</a>
+    <a mat-button routerLink="/contact">Contact</a>
+  </div>
+
+</mat-toolbar>-->
