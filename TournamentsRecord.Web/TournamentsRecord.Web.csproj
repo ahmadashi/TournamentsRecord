@@ -18,9 +18,20 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\app.component.backup\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\app.component.backup\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\app.component.backup\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\app.component.backup\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\app.component.backup\app.component.css" />
+    <None Remove="ClientApp\src\app\app.component.backup\app.component.html" />
+    <None Remove="ClientApp\src\app\app.component.backup\app.component.spec.ts" />
+    <None Remove="ClientApp\src\app\app.component.backup\app.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,7 +43,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\app.component.backup\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
