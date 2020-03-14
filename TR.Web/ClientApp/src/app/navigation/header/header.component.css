@@ -22,3 +22,7 @@ mat-toolbar{
         border-radius: 0px;
     }
 }
+
+ul li {
+  list-style: none;
+}
