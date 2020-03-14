@@ -1,13 +1,21 @@
-<app-layout>
+<!--<app-layout>-->
+  <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
   <mat-sidenav-container>
     <mat-sidenav #sidenav role="navigation">
       <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-      <main>
-        <router-outlet></router-outlet>
-      </main>
+      
+      <mat-drawer-container>
+        <mat-drawer mode="side" [opened]="!sidenav.opened">
+          <div fxHide.xs>
+            <app-sidebar></app-sidebar>
+          </div>
+        </mat-drawer>
+        <mat-drawer-content>
+          <router-outlet></router-outlet>
+        </mat-drawer-content>
+      </mat-drawer-container>      
     </mat-sidenav-content>
   </mat-sidenav-container>
-</app-layout>
+<!--</app-layout>-->

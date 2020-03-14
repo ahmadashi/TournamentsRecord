@@ -1,3 +1,21 @@
+/*mat-drawer {
+  width: 350px;
+}
+*/
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+mat-drawer-container {
+  height: 100%;
+}
+
+mat-drawer-content {
+  padding: 20px;
+}
+
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
   height: 100%;
   /*background-color: lightskyblue;

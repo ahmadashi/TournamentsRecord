@@ -15,6 +15,7 @@ import { MaterialModule } from './material/material.module';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,10 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     LayoutComponent,
     HomeComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    SidebarComponent,
+    //BrowserAnimationsModule,
+    //MaterialModule
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,8 +42,9 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
       { path: 'fetch-data', component: FetchDataComponent },
     ]),
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MaterialModule,
-    FlexLayoutModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
