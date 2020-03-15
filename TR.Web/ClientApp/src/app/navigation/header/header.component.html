@@ -1,22 +1,98 @@
 <mat-toolbar color="primary">
-  <div fxHide.gt-xs>
+  <mat-toolbar-row>
+    <div fxHide.gt-xs>
       <button mat-icon-button (click)="onToggleSidenav()">
-          <mat-icon>menu</mat-icon>
+        <mat-icon>menu</mat-icon>
       </button>
-  </div>
-  <div>
-      <a routerLink="/home">Owner-Account</a>
-  </div>
-  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    </div>
+    <div>
+      <a routerLink="/">Tournaments Record </a>
+    </div>
+
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+      <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+        <li>
+          <button mat-icon-button>
+            <mat-icon>settings</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-icon-button>
+            <mat-icon>help_outline</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>person_outline</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              Sign out
+            </button>
+          </mat-menu>
+
+        </li>
+      </ul>
+    </div>
+
+
+    <!--<div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+    <ul fxLayout="row" fxLayoutGap="20px">
+      <li>
+        <button mat-icon-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+      </li>
+      <li>
+        <button mat-icon-button>
+          <mat-icon>help_outline</mat-icon>
+        </button>
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>person_outline</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            Sign out
+          </button>
+        </mat-menu>
+
+      </li>
+    </ul>
+  </div>-->
+  </mat-toolbar-row>
+
+
+
+  <!--<div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
       <ul fxLayout fxLayoutGap="15px" class="navigation-items">
           <li>
-              <a routerLink="/owner">Owner Actions</a>
-          </li>
-          <li>
-              <a routerLink="/account">Account Actions</a>
-          </li>
+        <button mat-icon-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+      </li>
+      <li>
+        <button mat-icon-button>
+          <mat-icon>help_outline</mat-icon>
+        </button>
+      </li>
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>person_outline</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            Sign out
+          </button>
+        </mat-menu>
+
+      </li>
       </ul>
-  </div>
+  </div>-->
 </mat-toolbar>
 
 
