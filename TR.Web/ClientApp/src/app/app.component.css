@@ -2,6 +2,10 @@
   width: 350px;
 }
 */
+
+/*mat-drawer-container {
+  width: 350px;
+}*/
 :host {
   display: flex;
   flex-direction: column;
@@ -28,6 +32,10 @@ mat-sidenav {
 
 main {
     padding: 10px;
+}
+
+sidebar {
+  width: 20%;
 }
 
 
