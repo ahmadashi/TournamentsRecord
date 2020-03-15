@@ -1,6 +1,11 @@
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+}
+
+.mymat-icon {
+  font-size: 40px;  
 }
 
 a:hover, a:active{

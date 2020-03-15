@@ -1,5 +1,6 @@
 <!--<app-layout>-->
   <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+
   <mat-sidenav-container>
     <mat-sidenav #sidenav role="navigation">
       <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
@@ -18,4 +19,6 @@
       </mat-drawer-container>      
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+  <app-footer></app-footer>
 <!--</app-layout>-->

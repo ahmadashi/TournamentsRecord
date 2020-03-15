@@ -13,6 +13,7 @@ import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
+import { FooterComponent } from './navigation/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SidebarComponent } from './navigation/sidebar/sidebar.component';
     FetchDataComponent,    
     HomeComponent,
     HeaderComponent,
+    FooterComponent,
     SidenavListComponent,
     SidebarComponent    
   ],
