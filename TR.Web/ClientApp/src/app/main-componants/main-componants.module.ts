@@ -1,9 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateTournamentComponent } from './create-tournament/create-tournament.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TournamentService } from './tournament.service';
+import { GenericService } from './generic.service';
 
 @NgModule({
   declarations: [CreateTournamentComponent],
@@ -15,4 +17,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule,
   ]
 })
-export class MainComponantsModule { }
+export class MainComponantsModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: MainComponantsModule,
+      providers: [
+        GenericService,
+        TournamentService
+      ]
+    }
+  }
+}
