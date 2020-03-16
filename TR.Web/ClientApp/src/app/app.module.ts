@@ -14,6 +14,8 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 import { FooterComponent } from './navigation/footer/footer.component';
+import { MainComponantsModule } from './main-componants/main-componants.module';
+import { RoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -31,14 +33,16 @@ import { FooterComponent } from './navigation/footer/footer.component';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ]),
+    //RouterModule.forRoot([
+    //  { path: '', component: HomeComponent, pathMatch: 'full' },
+    //  { path: 'counter', component: CounterComponent },
+    //  { path: 'fetch-data', component: FetchDataComponent },
+    //]),
     BrowserAnimationsModule,
     FlexLayoutModule,
     MaterialModule,
+    MainComponantsModule,
+    RoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
