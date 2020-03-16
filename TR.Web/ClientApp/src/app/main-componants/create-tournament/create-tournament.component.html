@@ -23,23 +23,23 @@
 
     <mat-card-content>
       <div fxLayout fxLayout.xs="column wrap" fxLayoutGap="25px">
-
-        <mat-form-field appearance="outline" fxFlex="calc(50% - 25px)">
+        <!--"outline"-->
+        <mat-form-field color="primary" appearance="standard" fxFlex="calc(50% - 25px)">
           <mat-label>name</mat-label>
-          <input matInput placeholder="Tournament Name" [formControl]="createTourForm.controls.name" formControlName ="name" required>
+          <input matInput placeholder="Tournament Name" [formControl]="createTourForm.controls.name" formControlName="name" required>
           <mat-error *ngIf="shouldShowErrors(createTourForm.controls.name)">{{getErrorMessage(createTourForm.controls.name)}}</mat-error>
           <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Tournament Name</mat-hint>-->
+    <mat-hint>Tournament Name</mat-hint>-->
         </mat-form-field>
 
 
-        <mat-form-field appearance="outline" fxFlex="calc(50% - 25px)">
+        <mat-form-field color="primary" appearance="standard" fxFlex="calc(50% - 25px)">
           <mat-label>address</mat-label>
-          <input matInput placeholder="Tournament address" [formControl] ="createTourForm.controls.address"  formControlName="address" required>
+          <input matInput placeholder="Tournament address" [formControl]="createTourForm.controls.address" formControlName="address" required>
           <mat-error *ngIf="shouldShowErrors(createTourForm.controls.address)">{{getErrorMessage(createTourForm.controls.address)}}</mat-error>
           <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-          <mat-hint>Tournament address</mat-hint>-->
-        </mat-form-field>        
+    <mat-hint>Tournament address</mat-hint>-->
+        </mat-form-field>
 
       </div>
     </mat-card-content>

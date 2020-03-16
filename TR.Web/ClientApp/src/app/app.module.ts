@@ -16,6 +16,8 @@ import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 import { FooterComponent } from './navigation/footer/footer.component';
 import { MainComponantsModule } from './main-componants/main-componants.module';
 import { RoutingModule } from './routing/routing.module';
+import { StoreModule } from '@ngrx/store';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { RoutingModule } from './routing/routing.module';
     FlexLayoutModule,
     MaterialModule,
     MainComponantsModule,
-    RoutingModule
+    RoutingModule,
+    StoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
