@@ -33,7 +33,9 @@ export class TournamentService {
 
 
     return this.genericService.get('weatherforecast', '').pipe(
-      map((res: any) => { return (res as TrSportTypeModel[]); }));
+      map((res: any) => {
+        return (res as TrSportTypeModel[]);
+      }));
 
 
       //return this.genericService.get("ddd", "dsd")

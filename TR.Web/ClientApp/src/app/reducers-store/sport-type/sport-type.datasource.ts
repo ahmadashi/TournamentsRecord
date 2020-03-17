@@ -20,9 +20,9 @@ export class SportTypeDataSource implements DataSource<TrSportTypeModel> {
     this.store
       .pipe(
       select(selectAllSportTypes),
-      tap(SportType => {
-          if (SportType.length > 0) {
-            this.SportTypeSubject.next(SportType);
+      tap(SportTypes => {
+          if (SportTypes.length > 0) {
+            this.SportTypeSubject.next(SportTypes);
           }
           else {
             this.store.dispatch(new SportTypeRequested());

@@ -14,7 +14,7 @@ export class SportTypeRequested implements Action {
 
 export class SportTypeLoaded implements Action {
   readonly type = SportTypeActionTypes.SportTypeLoaded;
-  constructor(public payload: { SportType: TrSportTypeModel[] }) { }
+  constructor(public payload: { SportTypes: TrSportTypeModel[] }) { }
 }
 
 export class SportTypeCancelled implements Action {

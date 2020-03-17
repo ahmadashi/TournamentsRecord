@@ -19,7 +19,7 @@ export function SportTypeReducer(state = initialSportTypeState, action: SportTyp
       return { ...state, loading: true };
     }
     case SportTypeActionTypes.SportTypeLoaded: {
-      return adapter.addMany(action.payload.SportType, { ...state, loading: false });
+      return adapter.addMany(action.payload.SportTypes, { ...state, loading: false });
     }
     case SportTypeActionTypes.SportTypeCancelled: {
       return { ...state, loading: false };

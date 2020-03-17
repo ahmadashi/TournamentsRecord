@@ -26,12 +26,12 @@ export class SportTypeEffects {
         .pipe(
           catchError(err => {
           this.store.dispatch(new SportTypeCancelled());
-          let SportType: TrSportTypeModel[] = [];
-          return of(SportType);
+          let SportTypes: TrSportTypeModel[] = [];
+          return of(SportTypes);
           })
         )),
-      map((SportType: TrSportTypeModel[]) => {
-        return new SportTypeLoaded({ SportType: SportType });
+      map((SportTypes: TrSportTypeModel[]) => {
+        return new SportTypeLoaded({ SportTypes: SportTypes });
     }));
 
 }
