@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { TrSportTypeModel } from '../../models/tr-sport-type-model';
 import { SportTypeActions, SportTypeActionTypes } from './sport-type.actions';
+import { TrSportTypeModel } from '../../../models/tr-sport-type-model';
 
 
 export interface SportTypeState extends EntityState<TrSportTypeModel> {

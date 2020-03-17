@@ -5,9 +5,10 @@ import { Store, select } from '@ngrx/store';
 import { AppState } from '../../reducers';
 import { TrSportTypeModel } from '../../models/tr-sport-type-model';
 import { BehaviorSubject, of } from 'rxjs';
-import { selectAllSportTypes } from '../../reducers-store/sport-type/sport-type.selectors';
 import { tap, catchError } from 'rxjs/operators';
-import { SportTypeRequested } from '../../reducers-store/sport-type/sport-type.actions';
+import { selectAllSportTypes } from '../../reducers-store/sport-type-module/sport-type/sport-type.selectors';
+import { SportTypeRequested } from '../../reducers-store/sport-type-module/sport-type/sport-type.actions';
+
 
 
 @Component({

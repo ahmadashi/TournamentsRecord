@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { TrSportTypeModel } from '../../models/tr-sport-type-model';
+import { TrSportTypeModel } from '../../../models/tr-sport-type-model';
 
 
 export enum SportTypeActionTypes {

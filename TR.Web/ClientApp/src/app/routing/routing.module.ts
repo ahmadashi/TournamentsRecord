@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { CreateTournamentComponent } from '../main-componants/create-tournament/create-tournament.component';
+import { CreateTournamentComponent } from '../tournament/create-tournament/create-tournament.component';
 import { HomeComponent } from '../home/home.component';
 import { CounterComponent } from '../counter/counter.component';
 import { FetchDataComponent } from '../fetch-data/fetch-data.component';

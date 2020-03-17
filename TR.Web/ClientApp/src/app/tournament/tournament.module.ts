@@ -5,11 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TournamentService } from './tournament.service';
-import { GenericService } from './generic.service';
-import { StoreModule } from '@ngrx/store';
-import * as fromSportType from './../reducers-store/sport-type/sport-type.reducers';
-import { EffectsModule } from '@ngrx/effects';
-import { SportTypeEffects } from '../reducers-store/sport-type/sport-type.effect';
+import { GenericService } from '../services/generic.service';
+
 @NgModule({
   declarations: [CreateTournamentComponent],
   imports: [
@@ -17,23 +14,17 @@ import { SportTypeEffects } from '../reducers-store/sport-type/sport-type.effect
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    FlexLayoutModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
-    StoreModule.forFeature('sportTypeReducer', fromSportType.SportTypeReducer),
-    EffectsModule.forFeature([
-      SportTypeEffects
-    ]),
+    FlexLayoutModule,    
   ],
   providers: [
     GenericService,
     TournamentService
   ]
 })
-export class MainComponantsModule {
+export class TournamentModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: MainComponantsModule,
+      ngModule: TournamentModule,
       providers: [
         GenericService,
         TournamentService

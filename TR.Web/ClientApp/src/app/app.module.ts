@@ -14,9 +14,11 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 import { FooterComponent } from './navigation/footer/footer.component';
-import { MainComponantsModule } from './main-componants/main-componants.module';
 import { RoutingModule } from './routing/routing.module';
 import { StoreModule } from '@ngrx/store';
+import { TournamentModule } from './tournament/tournament.module';
+import { EffectsModule } from '@ngrx/effects';
+import { SportTypeModule } from './reducers-store/sport-type-module/sport-type.module';
 
 
 @NgModule({
@@ -35,17 +37,15 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    //RouterModule.forRoot([
-    //  { path: '', component: HomeComponent, pathMatch: 'full' },
-    //  { path: 'counter', component: CounterComponent },
-    //  { path: 'fetch-data', component: FetchDataComponent },
-    //]),
+    RoutingModule,    
     BrowserAnimationsModule,
     FlexLayoutModule,
     MaterialModule,
-    MainComponantsModule,
-    RoutingModule,
-    StoreModule
+    TournamentModule,    
+    StoreModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    SportTypeModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
