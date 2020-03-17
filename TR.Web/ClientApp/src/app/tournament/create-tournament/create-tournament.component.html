@@ -1,0 +1,61 @@
+<p>create-tournament works!</p>
+<form [formGroup]="createTourForm" (ngSubmit)="onSubmit(createTourForm.value)">
+
+
+  <!--<div class="content" fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxFlexFill>
+
+    <mat-form-field appearance="outline" required="true">
+      <mat-label>name</mat-label>
+      <input matInput placeholder="Tournament Name" formControlName="name">      
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>address</mat-label>
+      <input matInput placeholder="Tournament address" formControlName="address">      
+    </mat-form-field>
+
+  </div>-->
+
+
+
+
+  <mat-card fxFlex fxFlexAlign="start">
+
+    <mat-card-content>
+      <div fxLayout fxLayout.xs="column wrap" fxLayoutGap="25px">
+        <!--"standard"-->
+        <mat-form-field color="primary" appearance="outline" fxFlex="calc(50% - 25px)">
+          <mat-label>name</mat-label>
+          <input matInput placeholder="Tournament Name" [formControl]="createTourForm.controls.name" formControlName="name" required>
+          <mat-error *ngIf="shouldShowErrors(createTourForm.controls.name)">{{getErrorMessage(createTourForm.controls.name)}}</mat-error>
+          <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Tournament Name</mat-hint>-->
+        </mat-form-field>
+
+
+        <mat-form-field color="primary" appearance="outline" fxFlex="calc(50% - 25px)">
+          <mat-label>address</mat-label>
+          <input matInput placeholder="Tournament address" [formControl]="createTourForm.controls.address" formControlName="address" required>
+          <mat-error *ngIf="shouldShowErrors(createTourForm.controls.address)">{{getErrorMessage(createTourForm.controls.address)}}</mat-error>
+          <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Tournament address</mat-hint>-->
+        </mat-form-field>
+
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" [disabled]="!createTourForm.valid" type="submit">Create</button>      
+    </mat-card-actions>
+  </mat-card>
+
+
+
+
+
+
+
+
+  
+
+</form>

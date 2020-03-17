@@ -47,6 +47,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\reducers-store\tournament-module\" />
     <Folder Include="ClientApp\src\assets\logo\" />
   </ItemGroup>
 
