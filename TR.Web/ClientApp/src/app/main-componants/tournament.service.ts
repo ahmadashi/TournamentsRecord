@@ -32,7 +32,7 @@ export class TournamentService {
   public getSportsType(): Observable<TrSportTypeModel[]> {
 
 
-    return this.genericService.get("", "").pipe(
+    return this.genericService.get('weatherforecast', '').pipe(
       map((res: any) => { return (res as TrSportTypeModel[]); }));
 
 

@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { FormControl, Validators } from '@angular/forms';
+import { Store, select } from '@ngrx/store';
+import { AppState } from '../../reducers';
+import { TrSportTypeModel } from '../../models/tr-sport-type-model';
+import { BehaviorSubject, of } from 'rxjs';
+import { selectAllSportTypes } from '../../reducers-store/sport-type/sport-type.selectors';
+import { tap, catchError } from 'rxjs/operators';
+import { SportTypeRequested } from '../../reducers-store/sport-type/sport-type.actions';
 
 
 @Component({
@@ -9,10 +16,13 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./create-tournament.component.css']
 })
 export class CreateTournamentComponent implements OnInit {
+  public sportTypes: TrSportTypeModel[] = [];
+  private sportTypesSubject = new BehaviorSubject<TrSportTypeModel>(null);
 
     createTourForm;
 
-    constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+    private store: Store<AppState>) {
 
       let emailValidators = [
         Validators.required,
@@ -30,7 +40,7 @@ export class CreateTournamentComponent implements OnInit {
     }
 
     ngOnInit() {
-
+      this.loadSportTypes();
     }
 
     onSubmit(customerData) {
@@ -51,7 +61,21 @@ export class CreateTournamentComponent implements OnInit {
         showError = (control.dirty || control.touched);
       }
       return showError;
-    }
+  }
+
+  private loadSportTypes(): void {
+    this.store.pipe(select(selectAllSportTypes),
+      tap(schoolAggregates => {
+        if (schoolAggregates.length > 0) {
+          this.sportTypesSubject.next(schoolAggregates[0]);
+        }
+        else {
+          this.store.dispatch(new SportTypeRequested());
+        }
+      }),
+      catchError(() => of([]))
+    ).subscribe();
+  }
 
   }
 
