@@ -3,23 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TR.DAL.Migrations
 {
-    public partial class DBCreation : Migration
+    public partial class Initial_DB_Creation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "TournamentType",
-                columns: table => new
-                {
-                    TournamentTypeId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TournamentType", x => x.TournamentTypeId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Logos",
                 columns: table => new
@@ -66,6 +53,32 @@ namespace TR.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TournamentStatus",
+                columns: table => new
+                {
+                    TournamentStatusId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TournamentStatus", x => x.TournamentStatusId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TournamentType",
+                columns: table => new
+                {
+                    TournamentTypeId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TournamentType", x => x.TournamentTypeId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserType",
                 columns: table => new
                 {
@@ -90,6 +103,7 @@ namespace TR.DAL.Migrations
                     ModifyBy = table.Column<string>(maxLength: 25, nullable: false),
                     Name = table.Column<string>(maxLength: 25, nullable: false),
                     SportTypeId = table.Column<int>(nullable: false),
+                    TournamentStatusId = table.Column<int>(nullable: false),
                     TournamentTypeId = table.Column<int>(nullable: false),
                     StartDate = table.Column<string>(maxLength: 25, nullable: true),
                     LogId = table.Column<int>(nullable: false)
@@ -97,12 +111,6 @@ namespace TR.DAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tournaments", x => x.TournamentId);
-                    table.ForeignKey(
-                        name: "FK_Tournaments_TournamentType_TournamentTypeId",
-                        column: x => x.TournamentTypeId,
-                        principalTable: "TournamentType",
-                        principalColumn: "TournamentTypeId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tournaments_Logos_LogId",
                         column: x => x.LogId,
@@ -114,6 +122,18 @@ namespace TR.DAL.Migrations
                         column: x => x.SportTypeId,
                         principalTable: "SportType",
                         principalColumn: "SportTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tournaments_TournamentStatus_TournamentStatusId",
+                        column: x => x.TournamentStatusId,
+                        principalTable: "TournamentStatus",
+                        principalColumn: "TournamentStatusId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Tournaments_TournamentType_TournamentTypeId",
+                        column: x => x.TournamentTypeId,
+                        principalTable: "TournamentType",
+                        principalColumn: "TournamentTypeId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -175,17 +195,17 @@ namespace TR.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Teams", x => x.TeamId);
                     table.ForeignKey(
-                        name: "FK_Teams_Tournaments_TournamentId",
-                        column: x => x.TournamentId,
-                        principalTable: "Tournaments",
-                        principalColumn: "TournamentId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_Teams_Logos_LogId",
                         column: x => x.LogId,
                         principalTable: "Logos",
                         principalColumn: "LogoId",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Teams_Tournaments_TournamentId",
+                        column: x => x.TournamentId,
+                        principalTable: "Tournaments",
+                        principalColumn: "TournamentId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -308,36 +328,6 @@ namespace TR.DAL.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tournaments_TournamentTypeId",
-                table: "Tournaments",
-                column: "TournamentTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tournaments_LogId",
-                table: "Tournaments",
-                column: "LogId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Tournaments_SportTypeId",
-                table: "Tournaments",
-                column: "SportTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TournamentUsers_TournamentId",
-                table: "TournamentUsers",
-                column: "TournamentId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TournamentUsers_UserId",
-                table: "TournamentUsers",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TournamentUsers_UserTypeId",
-                table: "TournamentUsers",
-                column: "UserTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Players_LogId",
                 table: "Players",
                 column: "LogId");
@@ -363,14 +353,49 @@ namespace TR.DAL.Migrations
                 column: "TeamId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Teams_LogId",
+                table: "Teams",
+                column: "LogId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Teams_TournamentId",
                 table: "Teams",
                 column: "TournamentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Teams_LogId",
-                table: "Teams",
+                name: "IX_Tournaments_LogId",
+                table: "Tournaments",
                 column: "LogId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tournaments_SportTypeId",
+                table: "Tournaments",
+                column: "SportTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tournaments_TournamentStatusId",
+                table: "Tournaments",
+                column: "TournamentStatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tournaments_TournamentTypeId",
+                table: "Tournaments",
+                column: "TournamentTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TournamentUsers_TournamentId",
+                table: "TournamentUsers",
+                column: "TournamentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TournamentUsers_UserId",
+                table: "TournamentUsers",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TournamentUsers_UserTypeId",
+                table: "TournamentUsers",
+                column: "UserTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_LogId",
@@ -386,16 +411,13 @@ namespace TR.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TournamentUsers");
-
-            migrationBuilder.DropTable(
                 name: "Players");
 
             migrationBuilder.DropTable(
                 name: "Staff");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "TournamentUsers");
 
             migrationBuilder.DropTable(
                 name: "RoleType");
@@ -404,19 +426,25 @@ namespace TR.DAL.Migrations
                 name: "Teams");
 
             migrationBuilder.DropTable(
-                name: "UserType");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Tournaments");
 
             migrationBuilder.DropTable(
-                name: "TournamentType");
+                name: "UserType");
 
             migrationBuilder.DropTable(
                 name: "Logos");
 
             migrationBuilder.DropTable(
                 name: "SportType");
+
+            migrationBuilder.DropTable(
+                name: "TournamentStatus");
+
+            migrationBuilder.DropTable(
+                name: "TournamentType");
         }
     }
 }

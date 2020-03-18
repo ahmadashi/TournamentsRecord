@@ -23,7 +23,7 @@ namespace TR.DAL.Models
         public bool IsActive { get; set; }
         
         public virtual Tournament Tournament { get; set; }
-        //[ForeignKey("UserId")]
-        //public virtual List<User> Users { get; set; }
+        
+        public virtual User User { get; set; }
     }
 }
