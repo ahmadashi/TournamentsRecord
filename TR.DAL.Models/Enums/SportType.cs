@@ -9,7 +9,11 @@ namespace TR.DAL.Models.Enums
     {
         [Display(Name = "Soccer")]
         Soccer,
+        [Display(Name = "Tennis")]
+        Tennis,
         [Display(Name = "Table Tennis")]
-        TableTennis,        
+        TableTennis,
+        [Display(Name = "Basketball")]
+        Basketball,
     }
 }

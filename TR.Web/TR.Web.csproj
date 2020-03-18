@@ -43,6 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TR.DAL\TR.DAL.csproj" />
     <ProjectReference Include="..\TR.Utilities\TR.Utilities.csproj" />
   </ItemGroup>
 
