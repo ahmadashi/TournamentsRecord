@@ -3,138 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TR.DAL.DataAccess;
 
 namespace TR.DAL.Migrations
 {
     [DbContext(typeof(TRContext))]
-    [Migration("20200309055509_DBCreation")]
-    partial class DBCreation
+    partial class TRContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("TR.DAL.Models.Tournament", b =>
-                {
-                    b.Property<int>("TournamentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("TournamentTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LogId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ModifyBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
-
-                    b.Property<int>("SportTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("StartDate")
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
-
-                    b.HasKey("TournamentId");
-
-                    b.HasIndex("TournamentTypeId");
-
-                    b.HasIndex("LogId");
-
-                    b.HasIndex("SportTypeId");
-
-                    b.ToTable("Tournaments");
-                });
-
-            modelBuilder.Entity("TR.DAL.Models.TournamentType", b =>
-                {
-                    b.Property<int>("TournamentTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
-
-                    b.HasKey("TournamentTypeId");
-
-                    b.ToTable("TournamentType");
-                });
-
-            modelBuilder.Entity("TR.DAL.Models.TournamentUser", b =>
-                {
-                    b.Property<int>("TournamentUserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("TournamentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ModifyBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
-
-                    b.Property<DateTime>("ModifyDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserTypeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("TournamentUserId");
-
-                    b.HasIndex("TournamentId");
-
-                    b.HasIndex("UserId");
-
-                    b.HasIndex("UserTypeId");
-
-                    b.ToTable("TournamentUsers");
-                });
 
             modelBuilder.Entity("TR.DAL.Models.Logo", b =>
                 {
@@ -366,11 +249,58 @@ namespace TR.DAL.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("LogId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ModifyBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
+
+                    b.Property<int>("SportTypeId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("TournamentId")
                         .HasColumnType("int");
 
                     b.Property<int>("TournamenttId")
                         .HasColumnType("int");
+
+                    b.Property<string>("YearEstablish")
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
+
+                    b.HasKey("TeamId");
+
+                    b.HasIndex("LogId");
+
+                    b.HasIndex("TournamentId");
+
+                    b.ToTable("Teams");
+                });
+
+            modelBuilder.Entity("TR.DAL.Models.Tournament", b =>
+                {
+                    b.Property<int>("TournamentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("LogId")
                         .HasColumnType("int");
@@ -391,17 +321,107 @@ namespace TR.DAL.Migrations
                     b.Property<int>("SportTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("YearEstablish")
+                    b.Property<string>("StartDate")
                         .HasColumnType("nvarchar(25)")
                         .HasMaxLength(25);
 
-                    b.HasKey("TeamId");
+                    b.Property<int>("TournamentStatusId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("TournamentId");
+                    b.Property<int>("TournamentTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TournamentId");
 
                     b.HasIndex("LogId");
 
-                    b.ToTable("Teams");
+                    b.HasIndex("SportTypeId");
+
+                    b.HasIndex("TournamentStatusId");
+
+                    b.HasIndex("TournamentTypeId");
+
+                    b.ToTable("Tournaments");
+                });
+
+            modelBuilder.Entity("TR.DAL.Models.TournamentStatus", b =>
+                {
+                    b.Property<int>("TournamentStatusId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.HasKey("TournamentStatusId");
+
+                    b.ToTable("TournamentStatus");
+                });
+
+            modelBuilder.Entity("TR.DAL.Models.TournamentType", b =>
+                {
+                    b.Property<int>("TournamentTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.HasKey("TournamentTypeId");
+
+                    b.ToTable("TournamentType");
+                });
+
+            modelBuilder.Entity("TR.DAL.Models.TournamentUser", b =>
+                {
+                    b.Property<int>("TournamentUserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifyBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
+
+                    b.Property<DateTime>("ModifyDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TournamentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserTypeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TournamentUserId");
+
+                    b.HasIndex("TournamentId");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("UserTypeId");
+
+                    b.ToTable("TournamentUsers");
                 });
 
             modelBuilder.Entity("TR.DAL.Models.User", b =>
@@ -490,48 +510,6 @@ namespace TR.DAL.Migrations
                     b.ToTable("UserType");
                 });
 
-            modelBuilder.Entity("TR.DAL.Models.Tournament", b =>
-                {
-                    b.HasOne("TR.DAL.Models.TournamentType", "TournamentType")
-                        .WithMany()
-                        .HasForeignKey("TournamentTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TR.DAL.Models.Logo", "Logo")
-                        .WithMany()
-                        .HasForeignKey("LogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TR.DAL.Models.SportType", "SportType")
-                        .WithMany()
-                        .HasForeignKey("SportTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("TR.DAL.Models.TournamentUser", b =>
-                {
-                    b.HasOne("TR.DAL.Models.Tournament", "Tournament")
-                        .WithMany("TournamentUsers")
-                        .HasForeignKey("TournamentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TR.DAL.Models.User", null)
-                        .WithMany("UserTournaments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TR.DAL.Models.UserType", "UserType")
-                        .WithMany()
-                        .HasForeignKey("UserTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("TR.DAL.Models.Player", b =>
                 {
                     b.HasOne("TR.DAL.Models.Logo", "Logo")
@@ -570,13 +548,61 @@ namespace TR.DAL.Migrations
 
             modelBuilder.Entity("TR.DAL.Models.Team", b =>
                 {
-                    b.HasOne("TR.DAL.Models.Tournament", null)
-                        .WithMany("Teams")
-                        .HasForeignKey("TournamentId");
-
                     b.HasOne("TR.DAL.Models.Logo", "Logo")
                         .WithMany()
                         .HasForeignKey("LogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TR.DAL.Models.Tournament", null)
+                        .WithMany("Teams")
+                        .HasForeignKey("TournamentId");
+                });
+
+            modelBuilder.Entity("TR.DAL.Models.Tournament", b =>
+                {
+                    b.HasOne("TR.DAL.Models.Logo", "Logo")
+                        .WithMany()
+                        .HasForeignKey("LogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TR.DAL.Models.SportType", "SportType")
+                        .WithMany()
+                        .HasForeignKey("SportTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TR.DAL.Models.TournamentStatus", "TournamentStatus")
+                        .WithMany()
+                        .HasForeignKey("TournamentStatusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TR.DAL.Models.TournamentType", "TournamentType")
+                        .WithMany()
+                        .HasForeignKey("TournamentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TR.DAL.Models.TournamentUser", b =>
+                {
+                    b.HasOne("TR.DAL.Models.Tournament", "Tournament")
+                        .WithMany("TournamentUsers")
+                        .HasForeignKey("TournamentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TR.DAL.Models.User", "User")
+                        .WithMany("UserTournaments")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TR.DAL.Models.UserType", "UserType")
+                        .WithMany()
+                        .HasForeignKey("UserTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
