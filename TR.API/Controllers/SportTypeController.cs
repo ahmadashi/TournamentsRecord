@@ -22,6 +22,7 @@ namespace TR.API.Controllers
         public SportTypeController(ILogger<SportTypeController> logger,
             ISportTypeViewModelProvider sportTypeViewModelProvider) : base(logger)
         {
+            
             _logger = logger;
             _sportTypeViewModelProvider = sportTypeViewModelProvider;
         }

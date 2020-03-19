@@ -44,7 +44,7 @@ namespace TR.API
                 .AddDbContextPool<TRContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("TRDB")));
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper();
             services.AddScoped(typeof(IViewModelFactory<,>), typeof(ViewModelFactory<,>));
             //services.AddScoped(typeof(IRepository<>), typeof(RepositoryBase<>));
             //services.AddScoped(typeof(IReadOnlyRespository<>), typeof(ReadOnlyRepositoryBase<>));
