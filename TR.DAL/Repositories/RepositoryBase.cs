@@ -8,7 +8,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using TR.Infrastructure.Interfaces.Inclusions;
 using TR.Infrastructure.Interfaces.Infrastructure;
-using TR.DAL.Interfaces.Repositories;
+using TR.Infrastructure.Interfaces.Repositories;
 using TR.DAL.DataAccess;
 using TR.DAL.Extensions;
 using TR.Infrastructure.Implementations.Infrastructure;

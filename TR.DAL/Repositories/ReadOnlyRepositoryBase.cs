@@ -7,13 +7,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using TR.DAL.Interfaces.Repositories;
-using TR.DAL.DataAccess;
 using TR.Infrastructure.Interfaces.Repositories;
+using TR.DAL.DataAccess;
 using TR.DAL.Exception;
-//using Microsoft.EntityFrameworkCore.Relational;
-//using Vprc.Domain.Sql.Exception;
-//using TR.DAL.Factories;
 
 namespace TR.DAL.Repositories
 {

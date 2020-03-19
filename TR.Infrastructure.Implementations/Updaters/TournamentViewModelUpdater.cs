@@ -1,7 +1,6 @@
-﻿using TR.DAL.Interfaces.Repositories;
+﻿using TR.Infrastructure.Interfaces.Repositories;
 using TR.DAL.Models;
 using TR.Infrastructure.Interfaces.Factories;
-using TR.Infrastructure.Interfaces.Repositories;
 using TR.Infrastructure.Interfaces.Updaters;
 using TR.Infrastructure.ViewModel;
 using System.Collections.Generic;

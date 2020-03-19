@@ -1,4 +1,4 @@
-﻿using TR.DAL.Interfaces.Repositories;
+﻿using TR.Infrastructure.Interfaces.Repositories;
 using TR.DAL.Models;
 using TR.Infrastructure.Implementations.Inclusions;
 using TR.Infrastructure.Interfaces.Factories;

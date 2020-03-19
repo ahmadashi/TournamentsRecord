@@ -1,9 +1,6 @@
-﻿using TR.DAL.Interfaces.Repositories;
+﻿using TR.Infrastructure.Interfaces.Repositories;
 using TR.DAL.Models;
 using TR.Infrastructure.Interfaces.Factories;
-using TR.Infrastructure.Interfaces.Repositories;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Threading.Tasks;
 using TR.Infrastructure.Interfaces.Updaters;
 using TR.Infrastructure.ViewModel;
