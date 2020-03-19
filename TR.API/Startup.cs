@@ -13,6 +13,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TR.DAL.DataAccess;
 using TR.DAL.Exception;
+using TR.Infrastructure.Implementations.Providers;
+using TR.Infrastructure.Implementations.Updaters;
+using TR.Infrastructure.Interfaces.Factories;
+using TR.Infrastructure.Interfaces.Providers;
+using TR.Infrastructure.Interfaces.Updaters;
 using TR.Utilities.ExceptionHandling.Extensions;
 
 namespace TR.API
@@ -38,9 +43,47 @@ namespace TR.API
                 .AddDbContextPool<TRContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("TRDB")));
 
+            //services.AddAutoMapper();
+            //services.AddScoped(typeof(IViewModelFactory<,>), typeof(ViewModelFactory<,>));
+
             //ashi : in future move this to extension method for DAL
             //services.AddScoped(typeof(IRepository<AuditTrail>), typeof(AuditTrailRepository));
             services.AddTransient(typeof(IRepositoryExceptionHandler), typeof(RepositoryExceptionHandler));
+
+            services.AddTransient<ISportTypeViewModelProvider, SportTypeViewModelProvider>();
+            services.AddTransient<IRoleTypeViewModelProvider, RoleTypeViewModelProvider>();
+            services.AddTransient<IUserTypeViewModelProvider, UserTypeViewModelProvider>();
+            services.AddTransient<ITournamentTypeViewModelProvider, TournamentTypeViewModelProvider>();
+            services.AddTransient<ITournamentUserViewModelProvider, TournamentUserViewModelProvider>();
+            services.AddTransient<ITournamentViewModelProvider, TournamentViewModelProvider>();
+            services.AddTransient<IUserViewModelProvider, UserViewModelProvider>();
+            services.AddTransient<ITeamViewModelProvider, TeamViewModelProvider>();
+            services.AddTransient<IPlayerViewModelProvider, PlayerViewModelProvider>();
+            services.AddTransient<IStaffViewModelProvider, StaffViewModelProvider>();
+            services.AddTransient<ILogoViewModelProvider, LogoViewModelProvider>();
+
+
+            
+            services.AddTransient<ITournamentUserViewModelUpdater, TournamentUserViewModelUpdater>();
+            services.AddTransient<ITournamentViewModelUpdater, TournamentViewModelUpdater>();
+            services.AddTransient<IUserViewModelUpdater, UserViewModelUpdater>();
+            services.AddTransient<ITeamViewModelUpdater, TeamViewModelUpdater>();
+            services.AddTransient<IPlayerViewModelUpdater, PlayerViewModelUpdater>();
+            services.AddTransient<IStaffViewModelUpdater, StaffViewModelUpdater>();
+            services.AddTransient<ILogoViewModelUpdater, LogoViewModelUpdater>();
+
+
+            services.AddTransient<ISportTypeViewModelProvider, SportTypeViewModelProvider>();
+            services.AddTransient<IRoleTypeViewModelProvider, RoleTypeViewModelProvider>();
+            services.AddTransient<IUserTypeViewModelProvider, UserTypeViewModelProvider>();
+            services.AddTransient<ITournamentTypeViewModelProvider, TournamentTypeViewModelProvider>();
+            services.AddTransient<ITournamentUserViewModelProvider, TournamentUserViewModelProvider>();
+            services.AddTransient<ITournamentViewModelProvider, TournamentViewModelProvider>();
+            services.AddTransient<IUserViewModelProvider, UserViewModelProvider>();
+            services.AddTransient<ITeamViewModelProvider, TeamViewModelProvider>();
+            services.AddTransient<IPlayerViewModelProvider, PlayerViewModelProvider>();
+            services.AddTransient<IStaffViewModelProvider, StaffViewModelProvider>();
+            services.AddTransient<ILogoViewModelProvider, LogoViewModelProvider>();
 
         }
 

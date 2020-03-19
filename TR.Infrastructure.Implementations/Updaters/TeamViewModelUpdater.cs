@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
 
-namespace SportTeam.Infrastructure.Implementations.Updaters
+namespace TR.Infrastructure.Implementations.Updaters
 {
     public class TeamViewModelUpdater : ITeamViewModelUpdater
     {
