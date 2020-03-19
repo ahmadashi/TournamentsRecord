@@ -7,7 +7,7 @@ using TR.Utilities.ExceptionHandling;
 //using TR.Utilities.ExceptionHandling.Exceptions;
 //using Vprc.Domain.Exception;
 
-namespace TR.API.Controllers
+namespace TR.Web.Controllers
 {
     public class BaseController : ControllerBase
     {

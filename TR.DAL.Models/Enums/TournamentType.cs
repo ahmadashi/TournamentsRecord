@@ -7,12 +7,11 @@ namespace TR.DAL.Models.Enums
 {
     public enum TournamentType
     {
-        [Display(Name = "One Legies Leage")]
-        OneLeg,
-        [Display(Name = "Two Legies Leage")]
-        TwoLeg,
         [Display(Name = "Tournament (Playoff)")]
         Playoff,
-            
+        [Display(Name = "One Leg League")]
+        OneLeg,
+        [Display(Name = "Two Legs Leage")]
+        TwoLeg
     }
 }
