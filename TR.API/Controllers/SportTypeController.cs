@@ -28,7 +28,7 @@ namespace TR.API.Controllers
         }
 
         [HttpGet]
-        [Route("Get")]
+        //[Route("Get")]
         public async Task<ActionResult> Get()
         {
             try
