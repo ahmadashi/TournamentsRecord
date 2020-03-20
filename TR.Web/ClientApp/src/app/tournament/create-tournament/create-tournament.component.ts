@@ -18,9 +18,7 @@ import { SportTypeRequested } from '../../reducers-store/sport-type-module/sport
 })
 export class CreateTournamentComponent implements OnInit {
   public sportTypes: TrSportTypeModel[] = [];
-  private sportTypesSubject = new BehaviorSubject<TrSportTypeModel>(null);
-
-    createTourForm;
+  public createTourForm :any;
 
   constructor(private formBuilder: FormBuilder,
     private store: Store<AppState>) {
@@ -31,12 +29,17 @@ export class CreateTournamentComponent implements OnInit {
 
       let nameValidators = [
         Validators.required,
-        Validators.maxLength(25)];    
+        Validators.maxLength(25)];
+
+    let sportTypeValidators = [
+      Validators.required
+      ];
 
 
       this.createTourForm = this.formBuilder.group({
         name: new FormControl('', nameValidators),
-        address: new FormControl('', emailValidators)
+        address: new FormControl('', emailValidators),
+        sportType: new FormControl('', sportTypeValidators)
       });
     }
 
@@ -66,9 +69,9 @@ export class CreateTournamentComponent implements OnInit {
 
   private loadSportTypes(): void {
     this.store.pipe(select(selectAllSportTypes),
-      tap(schoolAggregates => {
-        if (schoolAggregates.length > 0) {
-          this.sportTypesSubject.next(schoolAggregates[0]);
+      tap(sportTypes => {
+        if (sportTypes.length > 0) {          
+          this.sportTypes = sportTypes;
         }
         else {
           this.store.dispatch(new SportTypeRequested());
@@ -78,7 +81,11 @@ export class CreateTournamentComponent implements OnInit {
     ).subscribe();
   }
 
-  }
+
+  
+
+
+}
 
   
 

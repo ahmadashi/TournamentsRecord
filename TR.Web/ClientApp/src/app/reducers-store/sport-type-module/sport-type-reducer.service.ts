@@ -34,7 +34,13 @@ export class SportTypeReducerService {
 
     return this.genericService.get('api/sporttype', '').pipe(
       map((res: any) => {
-        return (res as TrSportTypeModel[]);
+        const sportType = _.map(res,
+        function (element) {
+          return _.extend({}, element, {
+            id: element.sportTypeId
+          });
+        });
+      return (sportType as TrSportTypeModel[]);
       }));
 
 
