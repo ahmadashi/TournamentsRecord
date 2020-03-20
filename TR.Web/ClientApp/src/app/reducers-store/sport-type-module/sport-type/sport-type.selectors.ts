@@ -15,7 +15,7 @@ export const selectSportTypeById = (id: string) => createSelector(
   state => state.entities[id]
 );
 
-export const selectAdminDashboardSchoolLoading = createSelector(
+export const selectSportTypeLoading = createSelector(
   selectSportTypeState,
     state => state.loading
 );

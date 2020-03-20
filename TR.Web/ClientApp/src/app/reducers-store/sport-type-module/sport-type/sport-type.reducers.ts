@@ -4,13 +4,12 @@ import { TrSportTypeModel } from '../../../models/tr-sport-type-model';
 
 
 export interface SportTypeState extends EntityState<TrSportTypeModel> {
-  loading: boolean;
-  ecsLoading: boolean;
+  loading: boolean;  
 }
 
 export const adapter: EntityAdapter<TrSportTypeModel> = createEntityAdapter<TrSportTypeModel>();
 
-export const initialSportTypeState: SportTypeState = adapter.getInitialState({ loading: false, ecsLoading: false });
+export const initialSportTypeState: SportTypeState = adapter.getInitialState({ loading: false });
 
 export function SportTypeReducer(state = initialSportTypeState, action: SportTypeActions): SportTypeState {
   switch (action.type) {

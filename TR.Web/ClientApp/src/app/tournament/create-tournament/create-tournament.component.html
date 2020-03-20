@@ -1,3 +1,20 @@
+<!--isLoading | async-->
+<!--loading$ | async as loading-->
+  <div *ngIf="loading$ | async" class="overlay">
+    <mat-spinner
+    class="spinner"
+    [color]="primary">
+    
+  </mat-spinner>
+
+    <!--<mat-progress-spinner class="example-margin"
+                          [color]="color"
+                          [mode]="mode"
+                          [value]="value">
+    </mat-progress-spinner>-->
+  </div>
+
+
 <p>create-tournament works!</p>
 <form [formGroup]="createTourForm" (ngSubmit)="onSubmit(createTourForm.value)">
 
@@ -6,12 +23,12 @@
 
     <mat-form-field appearance="outline" required="true">
       <mat-label>name</mat-label>
-      <input matInput placeholder="Tournament Name" formControlName="name">      
+      <input matInput placeholder="Tournament Name" formControlName="name">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>address</mat-label>
-      <input matInput placeholder="Tournament address" formControlName="address">      
+      <input matInput placeholder="Tournament address" formControlName="address">
     </mat-form-field>
 
   </div>-->
@@ -56,7 +73,7 @@
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-raised-button color="primary" [disabled]="!createTourForm.valid" type="submit">Create</button>      
+      <button mat-raised-button color="primary" [disabled]="!createTourForm.valid" type="submit">Create</button>
     </mat-card-actions>
   </mat-card>
 
@@ -67,6 +84,6 @@
 
 
 
-  
+
 
 </form>

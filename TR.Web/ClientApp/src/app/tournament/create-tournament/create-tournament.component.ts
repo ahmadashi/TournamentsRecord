@@ -4,10 +4,10 @@ import { FormControl, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../../reducers';
 import { TrSportTypeModel } from '../../models/tr-sport-type-model';
-import { BehaviorSubject, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
-import { selectAllSportTypes } from '../../reducers-store/sport-type-module/sport-type/sport-type.selectors';
-import { SportTypeRequested } from '../../reducers-store/sport-type-module/sport-type/sport-type.actions';
+import { BehaviorSubject, of, Observable } from 'rxjs';
+import { tap, catchError, map } from 'rxjs/operators';
+import { selectAllSportTypes, selectSportTypeLoading } from '../../reducers-store/sport-type-module/sport-type/sport-type.selectors';
+import { SportTypeRequested, SportTypeLoaded } from '../../reducers-store/sport-type-module/sport-type/sport-type.actions';
 
 
 
@@ -18,7 +18,11 @@ import { SportTypeRequested } from '../../reducers-store/sport-type-module/sport
 })
 export class CreateTournamentComponent implements OnInit {
   public sportTypes: TrSportTypeModel[] = [];
-  public createTourForm :any;
+  public createTourForm: any;
+  public loading$: Observable<boolean>;
+  public loaded$: Observable<boolean>;
+  public mode: string = 'indeterminate';
+
 
   constructor(private formBuilder: FormBuilder,
     private store: Store<AppState>) {
@@ -79,6 +83,9 @@ export class CreateTournamentComponent implements OnInit {
       }),
       catchError(() => of([]))
     ).subscribe();
+
+    this.loading$ = this.store.pipe(select(selectSportTypeLoading));
+    this.loaded$ = this.loading$.pipe(map(loading => !loading));
   }
 
 
