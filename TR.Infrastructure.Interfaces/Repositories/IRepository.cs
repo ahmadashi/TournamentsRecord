@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TR.Infrastructure.Interfaces.Inclusions;
 using TR.Infrastructure.Interfaces.Infrastructure;
 
-namespace TR.DAL.Interfaces.Repositories
+namespace TR.Infrastructure.Interfaces.Repositories
 {
     public interface IRepository<T>
     {

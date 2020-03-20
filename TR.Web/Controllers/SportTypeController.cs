@@ -13,7 +13,7 @@ using TR.Web.ViewModels;
 namespace TR.Web.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class SportTypeController : BaseController
     {
         private readonly ILogger<SportTypeController> _logger;
@@ -27,22 +27,23 @@ namespace TR.Web.Controllers
         }
 
         [HttpGet]
-        [Route("Get")]        
+        //[Route("Get")]        
         public async Task<IActionResult> Get()
         {
             try
             {
 
-                var results = _apiClient.GetAsync<IEnumerable<SportTypeViewModel>>("SportType?");
+                var results = _apiClient.GetAsync<IEnumerable<SportTypeViewModel>>("sporttype");
                 _logger.LogDebug($"GET all sports types for select");
                 var result = await results;
+                return Ok(result);
 
-                var sportTypes = result
-                    .Select(s => new SelectOptionsViewModel { Id = s.SportTypeId, Text = s.Description })
-                    .ToList();
-                //schoolSectors.Insert(0, new SelectOptionsViewModel() { Id = 0, Text = "All" });
+                //var sportTypes = result
+                //    .Select(s => new SelectOptionsViewModel { Id = s.SportTypeId, Text = s.Description })
+                //    .ToList();
+                ////schoolSectors.Insert(0, new SelectOptionsViewModel() { Id = 0, Text = "All" });
 
-                return Ok(sportTypes);                
+                //return Ok(sportTypes);                
             }
             catch (Exception ex)
             {
