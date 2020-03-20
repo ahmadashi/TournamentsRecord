@@ -24,11 +24,11 @@ namespace TR.DAL.Migrations
                 columns: new[] { "RoleTypeId", "Description" },
                 values: new object[,]
                 {
-                    { 1, "HeadOfCoaches" },
+                    { 1, "Head Of Coaches" },
                     { 2, "Coach" },
-                    { 3, "CoachAssestance" },
-                    { 4, "TeamManager" },
-                    { 5, "FitnessTrainer" }
+                    { 3, "Coach Assestance" },
+                    { 4, "Team Manager" },
+                    { 5, "Fitness Trainer" }
                 });
 
 
@@ -49,9 +49,9 @@ namespace TR.DAL.Migrations
                 columns: new[] { "TournamentTypeId", "Description" },
                 values: new object[,]
                 {
-                    { 1, "Playoff" },
-                    { 2, "OneLeg" },
-                    { 3, "TwoLeg" },
+                    { 1, "Tournament (Playoff)" },
+                    { 2, "One Leg League" },
+                    { 3, "Two Legs Leage" },
                 });
 
 
