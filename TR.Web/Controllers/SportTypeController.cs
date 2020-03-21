@@ -26,8 +26,7 @@ namespace TR.Web.Controllers
             _apiClient.setClientKey("API");
         }
 
-        [HttpGet]
-        //[Route("Get")]        
+        [HttpGet]        
         public async Task<IActionResult> Get()
         {
             try

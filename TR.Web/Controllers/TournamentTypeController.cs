@@ -13,7 +13,7 @@ using TR.Web.ViewModels;
 namespace TR.Web.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class TournamentTypeController : BaseController
     {
         private readonly ILogger<TournamentTypeController> _logger;
@@ -26,23 +26,15 @@ namespace TR.Web.Controllers
             _apiClient.setClientKey("API");
         }
 
-        [HttpGet]
-        [Route("Get")]        
+        [HttpGet]                
         public async Task<IActionResult> Get()
         {
             try
-            {
-
-                var results = _apiClient.GetAsync<IEnumerable<TournamentTypeViewModel>>("TournamentType?");
+            {   
+                var results = _apiClient.GetAsync<IEnumerable<TournamentTypeViewModel>>("tournamenttype?");
                 _logger.LogDebug($"GET all Tournaments types for select");
                 var result = await results;
-
-                var TournamentTypes = result
-                    .Select(s => new SelectOptionsViewModel { Id = s.TournamentTypeId, Text = s.Description })
-                    .ToList();
-                //schoolSectors.Insert(0, new SelectOptionsViewModel() { Id = 0, Text = "All" });
-
-                return Ok(TournamentTypes);                
+                return Ok(result);
             }
             catch (Exception ex)
             {

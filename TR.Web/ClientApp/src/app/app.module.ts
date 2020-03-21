@@ -19,6 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import { TournamentModule } from './tournament/tournament.module';
 import { EffectsModule } from '@ngrx/effects';
 import { SportTypeModule } from './reducers-store/sport-type-module/sport-type.module';
+import { TournamentTypeModule } from './reducers-store/tournament-type-module/tournament-type.module';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { SportTypeModule } from './reducers-store/sport-type-module/sport-type.m
     StoreModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
-    SportTypeModule.forRoot()
+    SportTypeModule.forRoot(),
+    TournamentTypeModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -13,7 +13,7 @@ using TR.Utilities.HttpClientWrapper;
 namespace TR.API.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class StaffController : BaseController
     {
         private readonly ILogger<StaffController> _logger;

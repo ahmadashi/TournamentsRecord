@@ -13,7 +13,7 @@ using TR.Utilities.HttpClientWrapper;
 namespace TR.API.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class PlayerController : BaseController
     {
         private readonly ILogger<PlayerController> _logger;

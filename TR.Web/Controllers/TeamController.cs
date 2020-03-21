@@ -13,7 +13,7 @@ using TR.Web.ViewModels;
 namespace TR.Web.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class TeamController : BaseController
     {
         private readonly ILogger<TeamController> _logger;

@@ -8,6 +8,9 @@ import { BehaviorSubject, of, Observable } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
 import { selectAllSportTypes, selectSportTypeLoading } from '../../reducers-store/sport-type-module/sport-type/sport-type.selectors';
 import { SportTypeRequested, SportTypeLoaded } from '../../reducers-store/sport-type-module/sport-type/sport-type.actions';
+import { TournamentTypeRequested } from '../../reducers-store/tournament-type-module/tournament-type/tournament-type.actions';
+import { TrTournamentTypeModel } from '../../models/tr-Tournament-type-model';
+import { selectAllTournamentTypes } from '../../reducers-store/tournament-type-module/tournament-type/tournament-type.selectors';
 
 
 
@@ -18,6 +21,8 @@ import { SportTypeRequested, SportTypeLoaded } from '../../reducers-store/sport-
 })
 export class CreateTournamentComponent implements OnInit {
   public sportTypes: TrSportTypeModel[] = [];
+  public tourTypes: TrTournamentTypeModel[] = [];
+  
   public createTourForm: any;
   public loading$: Observable<boolean>;
   public loaded$: Observable<boolean>;
@@ -25,30 +30,28 @@ export class CreateTournamentComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-    private store: Store<AppState>) {
-
-      let emailValidators = [
-        Validators.required,
-        Validators.email];
+    private store: Store<AppState>) {      
 
       let nameValidators = [
         Validators.required,
         Validators.maxLength(25)];
 
-    let sportTypeValidators = [
+    let reqValidators = [
       Validators.required
       ];
 
 
       this.createTourForm = this.formBuilder.group({
-        name: new FormControl('', nameValidators),
-        address: new FormControl('', emailValidators),
-        sportType: new FormControl('', sportTypeValidators)
+        name: new FormControl('', nameValidators),        
+        sportType: new FormControl('', reqValidators),
+        tourType: new FormControl('', reqValidators),
+        startDate: new FormControl()
       });
     }
 
     ngOnInit() {
       this.loadSportTypes();
+      this.loadTourtTypes();
     }
 
     onSubmit(customerData) {
@@ -86,6 +89,22 @@ export class CreateTournamentComponent implements OnInit {
 
     this.loading$ = this.store.pipe(select(selectSportTypeLoading));
     this.loaded$ = this.loading$.pipe(map(loading => !loading));
+  }
+
+
+  private loadTourtTypes(): void {
+    this.store.pipe(select(selectAllTournamentTypes),
+      tap(tourTypes => {
+        if (tourTypes.length > 0) {
+          this.tourTypes = tourTypes;
+        }
+        else {
+          this.store.dispatch(new TournamentTypeRequested());
+        }
+      }),
+      catchError(() => of([]))
+    ).subscribe();
+    
   }
 
 

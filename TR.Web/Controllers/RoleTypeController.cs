@@ -13,7 +13,7 @@ using TR.Web.ViewModels;
 namespace TR.Web.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class RoleTypeController : BaseController
     {
         private readonly ILogger<RoleTypeController> _logger;
@@ -26,8 +26,7 @@ namespace TR.Web.Controllers
             _apiClient.setClientKey("API");
         }
 
-        [HttpGet]
-        [Route("Get")]        
+        [HttpGet]        
         public async Task<IActionResult> Get()
         {
             try
