@@ -9,6 +9,7 @@ using TR.Utilities.HttpClientWrapper;
 using TR.Utilities.HttpClientWrapper.Options;
 using System;
 using Microsoft.AspNetCore.Http;
+using TR.Utilities.Serialization;
 
 namespace TR
 {
@@ -49,6 +50,7 @@ namespace TR
             }
 
             services.AddScoped<IHttpClientWrapper, HttpClientWrapper>();
+            services.AddScoped<ISerializer, SerializerJson>();
 
         }
 
