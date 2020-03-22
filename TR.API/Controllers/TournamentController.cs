@@ -53,7 +53,7 @@ namespace TR.API.Controllers
         }
 
         [HttpGet("GetByUserId/{userId}")]
-        public async Task<ActionResult> GetByBookId(int userId)
+        public async Task<ActionResult> GetByUserId(int userId)
         {
             try
             {

@@ -47,7 +47,8 @@ import { TournamentTypeModule } from './reducers-store/tournament-type-module/to
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     SportTypeModule.forRoot(),
-    TournamentTypeModule.forRoot()
+    TournamentTypeModule.forRoot(),
+    TournamentModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

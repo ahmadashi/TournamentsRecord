@@ -53,6 +53,23 @@ namespace TR.Web.Controllers
             }
         }
 
+        [HttpGet("GetByUserId/{userId}")]
+        public async Task<ActionResult> GetByUserId(int userId)
+        {
+            try
+            {
+                _logger.LogDebug("GET all tournament for user");
+
+                var results = await _apiClient.GetAsync<IEnumerable<TournamentViewModel>>($"tournament/GetByUserId/{userId}?");
+
+                return Ok(results);
+            }
+            catch (Exception ex)
+            {
+                return HandleSpecificException(ex);
+            }
+        }
+
 
         [HttpPost]
         [Route("Update")]
@@ -63,13 +80,10 @@ namespace TR.Web.Controllers
             {
                 ApplyAudits(tournament, u => u.TournamentId);
 
-                //var payload1 = _serializer.ToPayload(tournament);
-                var payload = _serializer.ToJsonStringContent(tournament);
-                _logger.LogDebug($"Update tournament - ID : {tournament.TournamentId}");
+                _logger.LogDebug($"Update tournament - ID : {tournament.TournamentId}");                
                 
-                var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
                 var response = await _apiClient
-                    .PostAsync<TournamentViewModel>("tournament/Update", httpContent);
+                    .PostAsync<TournamentViewModel>("tournament/Update", _serializer.ToJsonStringContent(tournament));
                                                
                 return Json(response);
             }
@@ -91,13 +105,11 @@ namespace TR.Web.Controllers
             try
             {
                 ApplyAudits(tournament, u => u.TournamentId);
-                var payload = _serializer.ToJsonStringContent(tournament);
-            
+                           
                 _logger.LogDebug($"Update tournament - ID : {tournament.TournamentId}");
-            
-                var httpContent = new StringContent(payload, Encoding.UTF8, "application/json");
+                            
                 var response = await _apiClient
-                    .PostAsync<UserViewModel>("tournament/Add", httpContent);
+                    .PostAsync<UserViewModel>("tournament/Add", _serializer.ToJsonStringContent(tournament));
 
                 return Json(response);
             }

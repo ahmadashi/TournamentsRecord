@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace TR.Utilities.Serialization
 {
@@ -10,6 +11,8 @@ namespace TR.Utilities.Serialization
 
         byte[] ToPayload(object o);
 
-        string ToJsonStringContent(object o);
+        string ToJsonString(object o);
+
+        StringContent ToJsonStringContent(object o);
     }
 }

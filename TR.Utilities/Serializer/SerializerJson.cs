@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -21,9 +22,16 @@ namespace TR.Utilities.Serialization
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(o));
         }
 
-        public string ToJsonStringContent(object o)
+        public string ToJsonString(object o)
         {
             return JsonConvert.SerializeObject(o);
+        }
+
+        public StringContent ToJsonStringContent(object o)
+        {
+            var payload = ToJsonString(o);
+            var stringContent = new StringContent(payload, Encoding.UTF8, "application/json");
+            return stringContent;
         }
     }
 }

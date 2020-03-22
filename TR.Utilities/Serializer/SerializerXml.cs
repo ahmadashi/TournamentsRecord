@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
@@ -53,7 +54,7 @@ namespace TR.Utilities.Serialization
             }
         }
 
-        public string ToJsonStringContent(object o)
+        public string ToJsonString(object o)
         {
             var serializer = new XmlSerializer(o.GetType());
 
@@ -72,6 +73,14 @@ namespace TR.Utilities.Serialization
                     return sw.ToString();
                 }
             }
+        }
+
+
+        public StringContent ToJsonStringContent(object o)
+        {
+            var payload = ToJsonString(o);
+            var stringContent = new StringContent(payload, Encoding.UTF8, "application/json");
+            return stringContent;
         }
     }
 }
